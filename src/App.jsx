@@ -60,7 +60,6 @@ const partnerData = [
 
 // --- ELEGANT ENGINEERING BACKGROUND COMPONENT ---
 const ElegantEngineeringBackground = () => {
-  // Expanded particle array for a rich background
   const particles = [
     { id: 1, top: '15%', left: '20%', size: '3px', color: 'bg-white', anim: 'particle-1', delay: '0s' },
     { id: 2, top: '40%', left: '80%', size: '4px', color: 'bg-[#39B54A]', anim: 'particle-2', delay: '1s' },
@@ -94,13 +93,11 @@ const ElegantEngineeringBackground = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a1c2e] via-[#020604] to-[#071a12]"></div>
       <div className="absolute inset-0 bg-elegant-wave opacity-80"></div>
       
-      {/* Safe Blur Levels */}
       <div className="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-[#39B54A] rounded-full blur-[120px] opacity-[0.08]"></div>
       <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-[#00f0ff] rounded-full blur-[120px] opacity-[0.06]"></div>
       
       <div className="absolute top-[-10%] left-[-20%] w-[40%] h-[150%] bg-gradient-to-r from-transparent via-white/5 to-transparent rotate-[25deg] blur-2xl"></div>
       
-      {/* Stars */}
       <div className="absolute top-[15%] right-[15%] opacity-40 star-dotted">
         <svg width="200" height="200" viewBox="0 0 100 100" className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">
           <path d="M50 0 L55 45 L100 50 L55 55 L50 100 L45 55 L0 50 L45 45 Z" fill="currentColor" />
@@ -112,7 +109,6 @@ const ElegantEngineeringBackground = () => {
         </svg>
       </div>
 
-      {/* Glowing Particles */}
       {particles.map((p) => (
         <div
           key={p.id}
@@ -121,7 +117,6 @@ const ElegantEngineeringBackground = () => {
         ></div>
       ))}
 
-      {/* Gears & Wrench */}
       <div className="absolute top-[10%] left-[5%] opacity-[0.04]">
         <svg className="w-48 h-48 animate-spin-slow text-[#39B54A]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v4H7v2h4v4h2v-4h4v-2h-4V7z"/></svg>
       </div>
@@ -135,6 +130,7 @@ const ElegantEngineeringBackground = () => {
   );
 };
 
+// --- FIXED INTERACTIVE ID CARD FOR SAFARI/IOS ---
 const InteractiveIDCard = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const x = useMotionValue(0);
@@ -179,16 +175,40 @@ const InteractiveIDCard = () => {
         className="w-full h-full"
       >
         <motion.div
-          className="w-full h-full relative preserve-3d"
-          style={{ rotateX: isFlipped ? 0 : rotateX, rotateY: isFlipped ? 180 : rotateY }}
+          className="w-full h-full relative"
+          style={{ 
+            rotateX: isFlipped ? 0 : rotateX, 
+            rotateY: isFlipped ? 180 : rotateY,
+            transformStyle: 'preserve-3d',
+            WebkitTransformStyle: 'preserve-3d' // Safari Fix
+          }}
           animate={{ rotateY: isFlipped ? 180 : 0 }}
           transition={{ duration: 0.8, type: 'spring', stiffness: 120, damping: 20 }}
         >
-          <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(57,181,74,0.3)] border-2 border-[#39B54A]/50 bg-[#0A1C14]">
+          {/* Front Face */}
+          <div 
+            className="absolute inset-0 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(57,181,74,0.3)] border-2 border-[#39B54A]/50 bg-[#0A1C14]"
+            style={{ 
+              transform: 'rotateY(0deg)', 
+              WebkitTransform: 'rotateY(0deg)', // Safari Fix
+              backfaceVisibility: 'hidden', 
+              WebkitBackfaceVisibility: 'hidden' // Safari Fix
+            }}
+          >
             <img src="https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/front-id.png" alt="MESS ID Front" className="w-full h-full object-cover z-10 relative" />
             <motion.div className="absolute inset-0 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay" style={{ background: `radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.8) 0%, transparent 60%)` }} />
           </div>
-          <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(57,181,74,0.3)] border-2 border-[#39B54A]/50 bg-[#0A1C14]" style={{ transform: 'rotateY(180deg)' }}>
+          
+          {/* Back Face */}
+          <div 
+            className="absolute inset-0 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(57,181,74,0.3)] border-2 border-[#39B54A]/50 bg-[#0A1C14]"
+            style={{ 
+              transform: 'rotateY(180deg)', 
+              WebkitTransform: 'rotateY(180deg)', // Safari Fix
+              backfaceVisibility: 'hidden', 
+              WebkitBackfaceVisibility: 'hidden' // Safari Fix
+            }}
+          >
             <img src="https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/back-id.png" alt="MESS ID Back" className="w-full h-full object-cover z-10 relative" />
           </div>
         </motion.div>
@@ -329,7 +349,6 @@ const MESSLandingPage = () => {
                     </ul>
                   </motion.div>
 
-                  {/* BALANCED ROTATING LOGO */}
                   <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-1 flex justify-center mt-8 md:mt-0 w-full">
                     <div className="relative w-full max-w-[450px] aspect-square rounded-full border border-[#00f0ff]/30 flex items-center justify-center perspective-1000">
                       <div className="absolute inset-0 rounded-full border border-[#00f0ff]/50 border-dashed animate-spin-slow"></div>
@@ -339,7 +358,7 @@ const MESSLandingPage = () => {
                         <motion.img
                           src="/mess-logo.png"
                           alt="MESS Logo"
-                          className="w-48 md:w-72 object-contain" // BALANCED SIZE HERE
+                          className="w-48 md:w-72 object-contain"
                           style={{ transformStyle: 'preserve-3d' }}
                           animate={{
                             rotateY: [0, 360],
