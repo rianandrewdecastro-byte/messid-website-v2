@@ -27,35 +27,37 @@ import {
   Home,
   Search,
   CheckCircle,
+  Navigation,
+  ExternalLink,
 } from 'lucide-react';
 
-// --- FULL PARTNER DATA ---
+// --- FULL PARTNER DATA WITH MAPS & FACEBOOK LINKS ---
 const partnerData = [
-  { id: 2, name: 'Bitbase Computer & Tech', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/bitbase.png', category: 'General', location: 'P. Gomez, Batangas City', discount: '5% OFF on replacement parts, cleaning services, other selected repair and technical services, and selected products' },
-  { id: 3, name: 'But First, Coffee – Sta. Rita', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/bfc.png', category: 'General', location: 'Sta. Rita, Batangas', discount: '10% OFF on all drinks. One (1) discount may be availed per transaction' },
-  { id: 4, name: 'Engr. Guides Office and School Supplies', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/engrguides.png', category: 'General', location: 'Alangilan, Batangas City', discount: '5% OFF on all items' },
-  { id: 5, name: 'Engr. Labs', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/engrlabs.png', category: 'General', location: 'Alangilan, Batangas City', discount: '10% OFF' },
-  { id: 6, name: 'CALQ Scientific Calculators', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/calq.png', category: 'General', location: 'Alangilan, Batangas City', discount: '10% OFF' },
-  { id: 7, name: 'Vertex Prints', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/vertexprints.png', category: 'General', location: 'Alangilan, Batangas City', discount: '10% OFF, subject to a minimum of 150 pages for printing and 50 pages for photocopying' },
-  { id: 8, name: 'Golden Tub Laundry Shop', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/goldentub.png', category: 'General', location: 'Lot 4 Blk 10 Neptune St., Golden Country Homes, Alangilan, Batangas City', discount: '₱10 OFF per load' },
-  { id: 9, name: 'InvincibiliTEA', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/inivibilitea.png', category: 'General', location: 'Neptune St., Golden Country Homes, Alangilan, Batangas City', discount: '₱5 OFF on rice meals; 5% OFF on purchases worth ₱500 and above; 10% OFF on purchases worth ₱1,500 and above; applicable free or discounted meals on the member’s birthdate and during their birth month' },
-  { id: 10, name: 'JM 3D DESIGN', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/jm3d.png', category: 'General', location: 'Purok Uno, Brgy. Mabini, Lipa City', discount: '5% OFF on 3D printing; 3% OFF on design projects' },
-  { id: 11, name: 'Klasik Fades and Clothing', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/klasikfades.png', category: 'General', location: 'Neptune 1, Golden Country Homes, Alangilan, Batangas City', discount: '₱10 OFF on the third haircut; 1 FREE HAIRCUT during the member’s birthday month; ₱50 OFF on clothing purchases worth ₱600 or more' },
-  { id: 12, name: 'LCKD IN Study Hub', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/lckdin.png', category: 'General', location: 'Alangilan, Batangas City', discount: 'Exclusive Benefit — Choose ONE: Free study session after every 8 study sessions; ₱10 OFF for every 15 accumulated study-session hours; free 3-hour study session after exceeding 60 accumulated hours; Group Session Discount: 10% OFF for 5–9 members, 15% OFF for 10–14 members, 20% OFF for 15+ members. Organization Officer Benefit: 1 free study-session hour for up to 12 MESS officers for every 200 accumulated MESS member study-session hours' },
-  { id: 13, name: 'Local Hippie Crafts', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/localhippiecraft.jpg', category: 'General', location: 'San Isidro, Sitio Gitna, Batangas City', discount: '5% OFF on all products' },
-  { id: 14, name: 'Max Mango', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/maxmango.png', category: 'General', location: '79 C.Tirona, Poblacion, Batangas City, 4200 Batangas 607 President Jose P. Laurel Hwy, Batangas City, Batangas', discount: '10% OFF on all drinks' },
-  { id: 15, name: 'Modesto’s Farm and Resort', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/modestoresort.png', category: 'General', location: 'Sitio Sahingan, Brgy. Balete, Batangas City', discount: 'Farm & Resort: 15% OFF for groups where all individuals present valid MESS IDs. For mixed groups, the minimum rate applies to the first 20 persons, while MESS members among excess persons receive ₱50 OFF each' },
-  { id: 16, name: 'Modesto’s Pickleball', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/modestopickleball.png', category: 'General', location: 'Sitio Sahingan, Brgy. Balete, Batangas City', discount: '₱50 OFF/hour for groups where all individuals have valid MESS IDs; ₱25 OFF/hour for mixed groups with at least 2 MESS members' },
-  { id: 17, name: 'Papelia', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/papelia.png', category: 'General', location: 'E-Commerce Business', discount: '20% OFF on all bouquets with a minimum spend of ₱500' },
-  { id: 18, name: 'Ta Mila’s Shawarma', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/tamilasshawarma.png', category: 'General', location: 'Arce Subdivision, Batangas City', discount: '20% OFF on all food and drinks' },
-  { id: 19, name: 'The Good Coffee', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/tgc.png', category: 'General', location: 'Kumintang Ilaya, Batangas City', discount: '10% OFF on all drinks. One (1) discount may be availed per transaction' },
-  { id: 20, name: 'Zafira Fitness Gym', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/zafirafitnessgym.png', category: 'General', location: '3rd Flr., PPG Commercial Building, National Road, Kumintang Ilaya, Batangas City', discount: '20% OFF on the Lifetime Membership Fee; 25% OFF on the Monthly Gym Fee' },
-  { id: 21, name: 'Butch (Alangilan & Lipa)', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/butch.png', category: 'Silver Peak', location: 'Alangilan & Lipa City', discount: '10% OFF' },
-  { id: 22, name: 'Hungry Hippo (Multiple Locations)', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/hungryhippo.png', category: 'Silver Peak', location: 'SM City Batangas, UB Lipa, Caltex Tanauan, KM 36 SLEX', discount: '10% OFF' },
-  { id: 23, name: 'Shakey’s (Multiple Locations)', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/shakeys.png', category: 'Silver Peak', location: 'Batangas, Diversion, SLEX, SM Sto. Tomas, Sto. Tomas Hi-way, Montalban', discount: '10% OFF' },
-  { id: 24, name: '232 Café', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/232cafe.png', category: 'Silver Peak', location: '232 Caltex Rd, Batangas City', discount: '10% OFF', whiteBg: true },
-  { id: 25, name: '232 Restaurant / Taco Joe’s', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/232resto.png', category: 'Silver Peak', location: '232 Caltex Rd, Batangas City', discount: '10% OFF', whiteBg: true },
-  { id: 26, name: 'South Peak', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/southpeaks.png', category: 'Silver Peak', location: '232 Caltex Rd, Batangas City', discount: '10% OFF', whiteBg: true },
+  { id: 2, name: 'Bitbase Computer & Tech', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/bitbase.png', category: 'General', location: 'P. Gomez, Batangas City', discount: '5% OFF on replacement parts, cleaning services, other selected repair and technical services, and selected products', mapsLink: 'https://www.google.com/maps/place/P.Gomez,+Batangas+City,+Batangas/@13.7561983,121.0540164,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd054021bda135:0x6b12e4c58fdde7b5!8m2!3d13.7561983!4d121.0565967!16s%2Fg%2F1tfq258r?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/BitbaseComputerTech' },
+  { id: 3, name: 'But First, Coffee – Sta. Rita', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/bfc.png', category: 'General', location: 'Sta. Rita, Batangas', discount: '10% OFF on all drinks. One (1) discount may be availed per transaction', mapsLink: 'https://www.google.com/maps/place/But+First,+Coffee+(BFC)+-+Sta.+Rita,+Batangas/@13.777071,121.0404761,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd0f004386fdcf:0x8a83c8c3306e1cb8!8m2!3d13.777071!4d121.0430564!16s%2Fg%2F11why7yry9?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/butfirstcoffeestaritabatangas' },
+  { id: 4, name: 'Engr. Guides Office and School Supplies', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/engrguides.png', category: 'General', location: 'Alangilan, Batangas City', discount: '5% OFF on all items', mapsLink: 'https://www.google.com/maps/place/Alangilan,+Batangas+City,+Batangas/@13.7830168,121.0625827,16z/data=!3m1!4b1!4m6!3m5!1s0x33bd0fef93c252e9:0xcbc370e11d35fd08!8m2!3d13.7813266!4d121.065041!16s%2Fg%2F1tc_bsh0?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/Engr.Guides' },
+  { id: 5, name: 'Engr. Labs', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/engrlabs.png', category: 'General', location: 'Alangilan, Batangas City', discount: '10% OFF', mapsLink: 'https://www.google.com/maps/place/Alangilan,+Batangas+City,+Batangas/@13.7830168,121.0625827,16z/data=!3m1!4b1!4m6!3m5!1s0x33bd0fef93c252e9:0xcbc370e11d35fd08!8m2!3d13.7813266!4d121.065041!16s%2Fg%2F1tc_bsh0?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/profile.php?id=61590264975130' },
+  { id: 6, name: 'CALQ Scientific Calculators', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/calq.png', category: 'General', location: 'Alangilan, Batangas City', discount: '10% OFF', mapsLink: 'https://www.google.com/maps/place/Alangilan,+Batangas+City,+Batangas/@13.7830168,121.0625827,16z/data=!3m1!4b1!4m6!3m5!1s0x33bd0fef93c252e9:0xcbc370e11d35fd08!8m2!3d13.7813266!4d121.065041!16s%2Fg%2F1tc_bsh0?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/calqph' },
+  { id: 7, name: 'Vertex Prints', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/vertexprints.png', category: 'General', location: 'Alangilan, Batangas City', discount: '10% OFF, subject to a minimum of 150 pages for printing and 50 pages for photocopying', mapsLink: 'https://www.google.com/maps/place/Alangilan,+Batangas+City,+Batangas/@13.7830168,121.0625827,16z/data=!3m1!4b1!4m6!3m5!1s0x33bd0fef93c252e9:0xcbc370e11d35fd08!8m2!3d13.7813266!4d121.065041!16s%2Fg%2F1tc_bsh0?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/profile.php?id=61572044525685' },
+  { id: 8, name: 'Golden Tub Laundry Shop', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/goldentub.png', category: 'General', location: 'Lot 4 Blk 10 Neptune St., Golden Country Homes, Alangilan, Batangas City', discount: '₱10 OFF per load', mapsLink: 'https://www.google.com/maps/place/Golden+Country+Homes+Subdivision/@13.786525,121.0667317,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd0f2a86d87b97:0x300f1e2a7af8c89d!8m2!3d13.786525!4d121.069312!16s%2Fg%2F11g4hc05dn?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/profile.php?id=61574289908062' },
+  { id: 9, name: 'InvincibiliTEA', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/inivibilitea.png', category: 'General', location: 'Neptune St., Golden Country Homes, Alangilan, Batangas City', discount: '₱5 OFF on rice meals; 5% OFF on purchases worth ₱500 and above; 10% OFF on purchases worth ₱1,500 and above; applicable free or discounted meals on the member’s birthdate and during their birth month', mapsLink: 'https://www.google.com/maps/search/Neptune+St.,+Golden+Country+Homes,+Alangilan,+Batangas+City,+Batangas,+Philippines/@13.7858731,121.070737,18z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/Invincibilitea' },
+  { id: 10, name: 'JM 3D DESIGN', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/jm3d.png', category: 'General', location: 'Purok Uno, Brgy. Mabini, Lipa City', discount: '5% OFF on 3D printing; 3% OFF on design projects', mapsLink: 'https://www.google.com/maps/search/Purok+Uno,+Brgy.+Mabini,+Lipa+City/@13.9356662,121.0968886,13z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/profile.php?id=61576625156355' },
+  { id: 11, name: 'Klasik Fades and Clothing', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/klasikfades.png', category: 'General', location: 'Neptune 1, Golden Country Homes, Alangilan, Batangas City', discount: '₱10 OFF on the third haircut; 1 FREE HAIRCUT during the member’s birthday month; ₱50 OFF on clothing purchases worth ₱600 or more', mapsLink: 'https://www.google.com/maps/place/11+Neptune/@13.7853002,121.0691007,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd0f75b1cceb39:0x89648a186f57474e!8m2!3d13.7853002!4d121.071681!16s%2Fg%2F11txgwhs3_?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/profile.php?id=61590828577188' },
+  { id: 12, name: 'LCKD IN Study Hub', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/lckdin.png', category: 'General', location: 'Alangilan, Batangas City', discount: 'Exclusive Benefit — Choose ONE: Free study session after every 8 study sessions; ₱10 OFF for every 15 accumulated study-session hours; free 3-hour study session after exceeding 60 accumulated hours; Group Session Discount: 10% OFF for 5–9 members, 15% OFF for 10–14 members, 20% OFF for 15+ members. Organization Officer Benefit: 1 free study-session hour for up to 12 MESS officers for every 200 accumulated MESS member study-session hours', mapsLink: 'https://www.google.com/maps/place/LCKD+IN+Study+Hub/@13.7875922,121.0670696,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd0f00679f5679:0xe53cd5bd74705637!8m2!3d13.7875922!4d121.0696499!16s%2Fg%2F11nqxvs_wt?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/profile.php?id=61590333284805' },
+  { id: 13, name: 'Local Hippie Crafts', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/localhippiecraft.jpg', category: 'General', location: 'San Isidro, Sitio Gitna, Batangas City', discount: '5% OFF on all products', mapsLink: 'https://www.google.com/maps/place/Sitio+gitna/@13.7283791,121.0739245,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd05000034871d:0x9d99d38bfe0ca24d!8m2!3d13.7283791!4d121.0765048!16s%2Fg%2F11z0wpzry5?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/LocalHippieCrafts.ph' },
+  { id: 14, name: 'Max Mango', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/maxmango.png', category: 'General', location: '79 C.Tirona, Poblacion, Batangas City, 4200 Batangas 607 President Jose P. Laurel Hwy, Batangas City, Batangas', discount: '10% OFF on all drinks', mapsLink: 'https://www.google.com/maps/search/79+C.Tirona,+Poblacion,+Batangas+City,+4200+Batangas+607+President+Jose+P.+Laurel+Hwy,+Batangas+City,+Batangas/@13.7603633,121.0578543,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/maxmangobatangascity' },
+  { id: 15, name: 'Modesto’s Farm and Resort', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/modestoresort.png', category: 'General', location: 'Sitio Sahingan, Brgy. Balete, Batangas City', discount: 'Farm & Resort: 15% OFF for groups where all individuals present valid MESS IDs. For mixed groups, the minimum rate applies to the first 20 persons, while MESS members among excess persons receive ₱50 OFF each', mapsLink: 'https://www.google.com/maps/place/Modesto\'s+Farm+and+Resort/@13.8218982,121.0642072,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd0f7296051e2f:0x2162ad2bd75c5418!8m2!3d13.8218982!4d121.0667875!16s%2Fg%2F11pz8bzxpb?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/profile.php?id=61566439806748' },
+  { id: 16, name: 'Modesto’s Pickleball', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/modestopickleball.png', category: 'General', location: 'Sitio Sahingan, Brgy. Balete, Batangas City', discount: '₱50 OFF/hour for groups where all individuals have valid MESS IDs; ₱25 OFF/hour for mixed groups with at least 2 MESS members', mapsLink: 'https://www.google.com/maps/place/Modesto\'s+Farm+and+Resort/@13.8218982,121.0642072,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd0f7296051e2f:0x2162ad2bd75c5418!8m2!3d13.8218982!4d121.0667875!16s%2Fg%2F11pz8bzxpb?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/profile.php?id=61588577343264' },
+  { id: 17, name: 'Papelia', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/papelia.png', category: 'General', location: 'E-Commerce Business', discount: '20% OFF on all bouquets with a minimum spend of ₱500', mapsLink: null, fbLink: 'https://www.facebook.com/papelia.flowers' },
+  { id: 18, name: 'Ta Mila’s Shawarma', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/tamilasshawarma.png', category: 'General', location: 'Arce Subdivision, Batangas City', discount: '20% OFF on all food and drinks', mapsLink: 'https://www.google.com/maps/place/Ta+Mila\'s+Shawarma/@13.7688263,121.0568252,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd05aaf884b1d5:0x1032c2f091d01b82!8m2!3d13.7688263!4d121.0594055!16s%2Fg%2F11s7x3ygjm?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/tamilasshawarma' },
+  { id: 19, name: 'The Good Coffee', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/tgc.png', category: 'General', location: 'Kumintang Ilaya, Batangas City', discount: '10% OFF on all drinks. One (1) discount may be availed per transaction', mapsLink: 'https://www.google.com/maps/place/The+Good+Coffee/@13.7666744,121.0573768,16z/data=!4m10!1m2!2m1!1sthe+good+coffee+batangas!3m6!1s0x33bd05002b29034f:0x5979144f9de6964b!8m2!3d13.7731191!4d121.0663192!15sChh0aGUgZ29vZCBjb2ZmZWUgYmF0YW5nYXNaGiIYdGhlIGdvb2QgY29mZmVlIGJhdGFuZ2FzkgELY29mZmVlX3Nob3DgAQA!16s%2Fg%2F11zfmgtgr3?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/thegoodcoffee.ph' },
+  { id: 20, name: 'Zafira Fitness Gym', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/zafirafitnessgym.png', category: 'General', location: '3rd Flr., PPG Commercial Building, National Road, Kumintang Ilaya, Batangas City', discount: '20% OFF on the Lifetime Membership Fee; 25% OFF on the Monthly Gym Fee', mapsLink: 'https://www.google.com/maps/place/Zafira+Fitness+Gym/@13.7720474,121.0630964,17z/data=!3m1!4b1!4m6!3m5!1s0x33bd05585cc2d21f:0x655d1f52d0f4ec5f!8m2!3d13.7720474!4d121.0656767!16s%2Fg%2F11cs2w7q8f?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D', fbLink: 'https://www.facebook.com/zafirabatangascity' },
+  { id: 21, name: 'Butch (Alangilan & Lipa)', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/butch.png', category: 'Silver Peak', location: 'Alangilan & Lipa City', discount: '10% OFF', mapsLink: 'https://maps.app.goo.gl/enBUigr3Di54HDCH7', fbLink: 'https://www.facebook.com/ButchRestaurant' },
+  { id: 22, name: 'Hungry Hippo (Multiple Locations)', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/hungryhippo.png', category: 'Silver Peak', location: 'SM City Batangas, UB Lipa, Caltex Tanauan, KM 36 SLEX', discount: '10% OFF', mapsLink: 'https://maps.app.goo.gl/uzgNFjVUaiDQQSt18', fbLink: 'https://www.facebook.com/HungryHippoPhilippines' },
+  { id: 23, name: 'Shakey’s (Multiple Locations)', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/shakeys.png', category: 'Silver Peak', location: 'Batangas, Diversion, SLEX, SM Sto. Tomas, Sto. Tomas Hi-way, Montalban', discount: '10% OFF', mapsLink: 'https://maps.app.goo.gl/c47giSmozPwpMepP9', fbLink: 'https://www.facebook.com/ShakeysBatangasCity' },
+  { id: 24, name: '232 Café', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/232cafe.png', category: 'Silver Peak', location: '232 Caltex Rd, Batangas City', discount: '10% OFF', whiteBg: true, mapsLink: 'https://maps.app.goo.gl/a6tB2vJdbA76iLkS8', fbLink: 'https://www.facebook.com/232Cafe' },
+  { id: 25, name: '232 Restaurant / Taco Joe’s', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/232resto.png', category: 'Silver Peak', location: '232 Caltex Rd, Batangas City', discount: '10% OFF', whiteBg: true, mapsLink: 'https://maps.app.goo.gl/ZxgTX8RezYDVeChh7', fbLink: 'https://www.facebook.com/profile.php?id=61559735818165' },
+  { id: 26, name: 'South Peak', logo: 'https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/southpeaks.png', category: 'Silver Peak', location: '232 Caltex Rd, Batangas City', discount: '10% OFF', whiteBg: true, mapsLink: 'https://maps.app.goo.gl/Ax3QNhW4zJ7LABQW9', fbLink: 'https://www.facebook.com/profile.php?id=100091734310676' },
 ];
 
 // --- ELEGANT ENGINEERING BACKGROUND COMPONENT ---
@@ -180,7 +182,7 @@ const InteractiveIDCard = () => {
             rotateX: isFlipped ? 0 : rotateX, 
             rotateY: isFlipped ? 180 : rotateY,
             transformStyle: 'preserve-3d',
-            WebkitTransformStyle: 'preserve-3d' // Safari Fix
+            WebkitTransformStyle: 'preserve-3d'
           }}
           animate={{ rotateY: isFlipped ? 180 : 0 }}
           transition={{ duration: 0.8, type: 'spring', stiffness: 120, damping: 20 }}
@@ -190,9 +192,9 @@ const InteractiveIDCard = () => {
             className="absolute inset-0 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(57,181,74,0.3)] border-2 border-[#39B54A]/50 bg-[#0A1C14]"
             style={{ 
               transform: 'rotateY(0deg)', 
-              WebkitTransform: 'rotateY(0deg)', // Safari Fix
+              WebkitTransform: 'rotateY(0deg)', 
               backfaceVisibility: 'hidden', 
-              WebkitBackfaceVisibility: 'hidden' // Safari Fix
+              WebkitBackfaceVisibility: 'hidden' 
             }}
           >
             <img src="https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/front-id.png" alt="MESS ID Front" className="w-full h-full object-cover z-10 relative" />
@@ -204,9 +206,9 @@ const InteractiveIDCard = () => {
             className="absolute inset-0 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(57,181,74,0.3)] border-2 border-[#39B54A]/50 bg-[#0A1C14]"
             style={{ 
               transform: 'rotateY(180deg)', 
-              WebkitTransform: 'rotateY(180deg)', // Safari Fix
+              WebkitTransform: 'rotateY(180deg)', 
               backfaceVisibility: 'hidden', 
-              WebkitBackfaceVisibility: 'hidden' // Safari Fix
+              WebkitBackfaceVisibility: 'hidden' 
             }}
           >
             <img src="https://raw.githubusercontent.com/rianandrewdecastro-byte/mess-id-assets/main/back-id.png" alt="MESS ID Back" className="w-full h-full object-cover z-10 relative" />
@@ -296,7 +298,6 @@ const MESSLandingPage = () => {
         </div>
 
         <div className="shrink-0">
-          {/* NAVBAR PRE ORDER BUTTON - REPLACED WITH LINK TO GOOGLE FORM */}
           <a 
             href="https://forms.gle/oN76nRuCYB9GNSmN9" 
             target="_blank" 
@@ -322,7 +323,6 @@ const MESSLandingPage = () => {
                     Your official MESS Identification Card is more than just an ID. It's your access key to exclusive privileges, academic validation, and a network of accredited partners.
                   </p>
                   <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6">
-                    {/* HERO PRE ORDER NOW BUTTON - REPLACED WITH LINK TO GOOGLE FORM */}
                     <a 
                       href="https://forms.gle/oN76nRuCYB9GNSmN9" 
                       target="_blank" 
@@ -459,6 +459,30 @@ const MESSLandingPage = () => {
                       <div className="w-full space-y-4 text-left border-t border-white/10 pt-4 md:pt-6 mt-4 flex-grow">
                         <div className="flex items-start gap-3 text-xs md:text-sm text-gray-300"><MapPin size={16} className="text-[#39B54A] mt-1 shrink-0" /><span className="flex-1 text-justify">{partner.location}</span></div>
                         <div className="flex items-start gap-3 text-xs md:text-sm text-[#00f0ff] font-bold bg-[#00f0ff]/10 p-3 md:p-4 rounded border border-[#00f0ff]/20 mt-4"><Tag size={16} className="shrink-0 mt-1" /><span className="flex-1 text-justify">{partner.discount}</span></div>
+                        
+                        {/* NEW BUTTONS FOR MAPS & FACEBOOK */}
+                        <div className="flex gap-2 w-full mt-3">
+                          {partner.mapsLink && (
+                            <a 
+                              href={partner.mapsLink} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="flex-1 flex items-center justify-center gap-2 py-2 text-[10px] md:text-xs font-mono font-bold tracking-wider rounded border border-[#39B54A]/50 text-[#39B54A] hover:bg-[#39B54A] hover:text-black transition-all duration-300"
+                            >
+                              <Navigation size={14} /> LOCATE
+                            </a>
+                          )}
+                          {partner.fbLink && (
+                            <a 
+                              href={partner.fbLink} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="flex-1 flex items-center justify-center gap-2 py-2 text-[10px] md:text-xs font-mono font-bold tracking-wider rounded border border-[#00f0ff]/50 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black transition-all duration-300"
+                            >
+                              <ExternalLink size={14} /> VISIT
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </motion.div>
                   ))}
