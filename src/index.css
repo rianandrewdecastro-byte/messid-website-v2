@@ -76,7 +76,13 @@ body {
   position: relative;
 }
 .hud-corner::before, .hud-corner::after {
-  content: ''; position: absolute; width: 15px; height: 15px; border: 2px solid #39B54A; transition: all 0.3s ease;
+  content: ''; 
+  position: absolute; 
+  width: 15px; 
+  height: 15px; 
+  border: 2px solid #39B54A; 
+  transition: all 0.3s ease;
+  pointer-events: none; /* FIX: Allows clicking through the decorative brackets */
 }
 .hud-corner::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
 .hud-corner::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }

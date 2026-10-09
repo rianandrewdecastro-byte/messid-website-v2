@@ -296,9 +296,15 @@ const MESSLandingPage = () => {
         </div>
 
         <div className="shrink-0">
-          <button className="bg-[#39B54A] hover:bg-[#2d913b] text-black font-bold py-2 px-4 md:py-3 md:px-6 rounded-none skew-x-[-10deg] transition-all duration-300 hover:shadow-[0_0_30px_rgba(57,181,74,0.6)] border border-[#8aff9e]">
+          {/* NAVBAR PRE ORDER BUTTON - REPLACED WITH LINK TO GOOGLE FORM */}
+          <a 
+            href="https://forms.gle/oN76nRuCYB9GNSmN9" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="bg-[#39B54A] hover:bg-[#2d913b] text-black font-bold py-2 px-4 md:py-3 md:px-6 rounded-none skew-x-[-10deg] transition-all duration-300 hover:shadow-[0_0_30px_rgba(57,181,74,0.6)] border border-[#8aff9e] inline-block"
+          >
             <span className="block skew-x-[10deg] text-xs md:text-sm">PRE ORDER</span>
-          </button>
+          </a>
         </div>
       </nav>
 
@@ -316,9 +322,15 @@ const MESSLandingPage = () => {
                     Your official MESS Identification Card is more than just an ID. It's your access key to exclusive privileges, academic validation, and a network of accredited partners.
                   </p>
                   <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6">
-                    <button className="bg-[#39B54A] hover:bg-[#2d913b] text-black font-bold py-3 md:py-4 px-6 md:px-10 rounded-none flex items-center gap-3 transition-all duration-300 hover:shadow-[0_0_40px_rgba(57,181,74,0.6)] border-2 border-transparent hover:border-white">
+                    {/* HERO PRE ORDER NOW BUTTON - REPLACED WITH LINK TO GOOGLE FORM */}
+                    <a 
+                      href="https://forms.gle/oN76nRuCYB9GNSmN9" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="bg-[#39B54A] hover:bg-[#2d913b] text-black font-bold py-3 md:py-4 px-6 md:px-10 rounded-none flex items-center gap-3 transition-all duration-300 hover:shadow-[0_0_40px_rgba(57,181,74,0.6)] border-2 border-transparent hover:border-white inline-flex"
+                    >
                       PRE ORDER NOW <ArrowRight size={20} />
-                    </button>
+                    </a>
                     <button onClick={() => setActivePage('partners')} className="border-2 border-[#39B54A]/50 hover:border-[#39B54A] hover:bg-[#39B54A]/10 text-white font-bold py-3 md:py-4 px-6 md:px-10 rounded-none transition-all duration-300 font-mono">
                       VIEW PARTNERS
                     </button>
@@ -526,17 +538,41 @@ const MESSLandingPage = () => {
                 <form className="space-y-4 md:space-y-6" onSubmit={handleFormSubmit}>
                   <div>
                     <label className="block text-xs md:text-sm font-mono text-gray-400 mb-2">FULL NAME</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full bg-[#020604] border border-white/20 focus:border-[#39B54A] p-3 md:p-4 text-white outline-none transition-colors text-sm" placeholder="Juan Dela Cruz" />
+                    <input 
+                      type="text" 
+                      name="name" 
+                      value={formData.name} 
+                      onChange={handleInputChange} 
+                      required 
+                      className="w-full bg-[#020604] border border-white/20 focus:border-[#39B54A] p-3 md:p-4 text-white outline-none transition-colors text-sm relative z-10" 
+                      placeholder="Juan Dela Cruz" 
+                    />
                   </div>
                   <div>
                     <label className="block text-xs md:text-sm font-mono text-gray-400 mb-2">EMAIL ADDRESS</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full bg-[#020604] border border-white/20 focus:border-[#39B54A] p-3 md:p-4 text-white outline-none transition-colors text-sm" placeholder="juan@email.com" />
+                    <input 
+                      type="email" 
+                      name="email" 
+                      value={formData.email} 
+                      onChange={handleInputChange} 
+                      required 
+                      className="w-full bg-[#020604] border border-white/20 focus:border-[#39B54A] p-3 md:p-4 text-white outline-none transition-colors text-sm relative z-10" 
+                      placeholder="juan@email.com" 
+                    />
                   </div>
                   <div>
                     <label className="block text-xs md:text-sm font-mono text-gray-400 mb-2">MESSAGE</label>
-                    <textarea name="message" value={formData.message} onChange={handleInputChange} required rows="4" className="w-full bg-[#020604] border border-white/20 focus:border-[#39B54A] p-3 md:p-4 text-white outline-none transition-colors text-sm" placeholder="Type your inquiry here..."></textarea>
+                    <textarea 
+                      name="message" 
+                      value={formData.message} 
+                      onChange={handleInputChange} 
+                      required 
+                      rows="4" 
+                      className="w-full bg-[#020604] border border-white/20 focus:border-[#39B54A] p-3 md:p-4 text-white outline-none transition-colors text-sm relative z-10" 
+                      placeholder="Type your inquiry here..."
+                    ></textarea>
                   </div>
-                  <button type="submit" className={`w-full font-bold py-3 md:py-4 flex items-center justify-center gap-3 transition-all duration-300 text-sm md:text-base ${isSubmitted ? 'bg-[#00f0ff] text-black' : 'bg-[#39B54A] hover:bg-[#2d913b] text-black'}`}>
+                  <button type="submit" className={`w-full font-bold py-3 md:py-4 flex items-center justify-center gap-3 transition-all duration-300 text-sm md:text-base relative z-10 ${isSubmitted ? 'bg-[#00f0ff] text-black' : 'bg-[#39B54A] hover:bg-[#2d913b] text-black'}`}>
                     {isSubmitted ? <>MESSAGE SENT! <CheckCircle size={20} /></> : <>SEND MESSAGE <Send size={20} /></>}
                   </button>
                   <p className="text-[10px] md:text-xs text-gray-500 text-center mt-2">* Clicking this will open your default email app with the message pre-filled.</p>
