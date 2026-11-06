@@ -1,18 +1,23 @@
 @import 'tailwindcss';
 
-/* --- 3D PERSPECTIVE & BACKFACE (Safari/iOS Compatible) --- */
-.perspective-1000 { 
-  perspective: 1000px; 
-  -webkit-perspective: 1000px; 
+/* --- CUSTOM CURSOR (Only on devices with a mouse) --- */
+@media (pointer: fine) {
+  body, a, button, input, textarea, summary {
+    cursor: none !important;
+  }
 }
-.preserve-3d { 
-  transform-style: preserve-3d; 
-  -webkit-transform-style: preserve-3d; 
+
+/* --- ACCESSIBILITY FOCUS RINGS --- */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #020604, 0 0 0 4px #39B54A;
+  border-radius: 4px;
 }
-.backface-hidden { 
-  backface-visibility: hidden; 
-  -webkit-backface-visibility: hidden; 
-}
+
+/* --- 3D PERSPECTIVE & BACKFACE --- */
+.perspective-1000 { perspective: 1000px; -webkit-perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; -webkit-transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 
 /* --- GLOBAL VIBE --- */
 html { scroll-behavior: smooth; }
@@ -29,8 +34,6 @@ body {
 @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
 @keyframes pulse-glow { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.2); } }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-/* Particle Drift Animations */
 @keyframes drift-1 { 0%, 100% { transform: translate(0, 0); opacity: 0.2; } 50% { transform: translate(20px, -30px); opacity: 0.8; } }
 @keyframes drift-2 { 0%, 100% { transform: translate(0, 0); opacity: 0.1; } 50% { transform: translate(-30px, -20px); opacity: 0.6; } }
 @keyframes drift-3 { 0%, 100% { transform: translate(0, 0); opacity: 0.3; } 50% { transform: translate(15px, 25px); opacity: 0.9; } }
@@ -40,11 +43,21 @@ body {
 .animate-scanline { animation: scanline 4s linear infinite; }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
-.particle-1 { animation: drift-1 8s ease-in-out infinite; }
-.particle-2 { animation: drift-2 10s ease-in-out infinite; }
-.particle-3 { animation: drift-3 12s ease-in-out infinite; }
+/* --- GLITCH EFFECT FOR EASTER EGG --- */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+.animate-glitch {
+  animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+  filter: hue-rotate(90deg) contrast(150%);
+}
 
-/* --- ELEGANT AURORA WAVE --- */
+/* --- BACKGROUND ELEMENTS --- */
 .bg-elegant-wave {
   background: radial-gradient(circle at 50% 0%, rgba(57, 181, 74, 0.10) 0%, transparent 60%),
               radial-gradient(circle at 0% 100%, rgba(0, 240, 255, 0.05) 0%, transparent 50%);
@@ -52,7 +65,6 @@ body {
   transform: rotate(-15deg) scale(1.2);
 }
 
-/* --- BACKGROUND STAR --- */
 .star-dotted {
   background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
   mask-image: radial-gradient(circle, black 30%, transparent 70%);
@@ -76,13 +88,7 @@ body {
   position: relative;
 }
 .hud-corner::before, .hud-corner::after {
-  content: ''; 
-  position: absolute; 
-  width: 15px; 
-  height: 15px; 
-  border: 2px solid #39B54A; 
-  transition: all 0.3s ease;
-  pointer-events: none; /* FIX: Allows clicking through the decorative brackets */
+  content: ''; position: absolute; width: 15px; height: 15px; border: 2px solid #39B54A; transition: all 0.3s ease; pointer-events: none;
 }
 .hud-corner::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
 .hud-corner::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
